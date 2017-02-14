@@ -34,7 +34,9 @@ extension FruitListingViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FruitCell", for: indexPath)
-        let fruit = fruits[(indexPath as NSIndexPath).row]
+//        let fruit = fruits[(indexPath as NSIndexPath).row]
+//        Code below is more swifty? It works, but can't tell if it's more appropriate
+        let fruit = fruits[indexPath.row]
         cell.textLabel?.text = fruit
         return cell
     }
@@ -43,7 +45,8 @@ extension FruitListingViewController {
         if segue.identifier != "ShowFruitDetails" { return }
         if let dest = segue.destination as? FruitViewController,
                let indexPath = tableView.indexPathForSelectedRow {
-            dest.fruit = fruits[(indexPath as NSIndexPath).row]
+//            dest.fruit = fruits[(indexPath as NSIndexPath).row]
+            dest.fruit = fruits[indexPath.row]
         }
     }
 }
